@@ -1,12 +1,23 @@
 // external imports
 import React, {useState} from 'react';
 import {Button, StyleSheet, TextInput} from 'react-native';
+import {useDispatch} from 'react-redux';
 
 // internal imports
 import Screen from '../Components/Screen';
 
+import {setUserName} from '../Store/Actions/Auth';
+
 const WelcomeScreen = ({navigation}) => {
   const [name, setName] = useState('');
+
+  const dispatch = useDispatch();
+
+  const handleSave = () => {
+    dispatch(setUserName(name));
+    navigation.navigate('Profile');
+  };
+
   return (
     <Screen style={styles.container}>
       <TextInput
@@ -16,12 +27,7 @@ const WelcomeScreen = ({navigation}) => {
         placeholder="Enter Your Name"
       />
 
-      <Button
-        title="Save"
-        onPress={() => {
-          navigation.navigate('Profile');
-        }}
-      />
+      <Button title="Save" onPress={() => handleSave()} />
     </Screen>
   );
 };
