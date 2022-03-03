@@ -6,9 +6,10 @@ import DeviceInfo from 'react-native-device-info';
 
 // internal imports
 import Screen from '../Components/Screen';
-
-import {setUserName} from '../Store/Actions/Auth';
 import AppModal from '../Components/AppModal';
+
+// redux actions
+import {setUserName} from '../Store/Actions/Auth';
 
 const WelcomeScreen = ({navigation}) => {
   const [name, setName] = useState('');

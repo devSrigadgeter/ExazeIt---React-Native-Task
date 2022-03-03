@@ -1,3 +1,4 @@
+// external imports
 import React from 'react';
 import {Modal, StyleSheet, View} from 'react-native';
 

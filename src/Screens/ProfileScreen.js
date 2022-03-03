@@ -2,10 +2,10 @@
 import React from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
-import Avatar from '../Components/Avatar';
 
 // internal imports
 import Screen from '../Components/Screen';
+import Avatar from '../Components/Avatar';
 
 const ProfileScreen = ({navigation}) => {
   const {userName} = useSelector(state => state.auth);
