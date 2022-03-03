@@ -1,14 +1,21 @@
 // external imports
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
+import {useSelector} from 'react-redux';
 
+// internal imports
 import AppButton from '../Components/AppButton';
 import AppSlider from '../Components/AppSlider';
+import Avatar from '../Components/Avatar';
 import Screen from '../Components/Screen';
 
 const ButtonsScreen = () => {
+  const {userName} = useSelector(state => state.auth);
+
   return (
     <Screen style={styles.container}>
+      <Avatar />
+      <Text style={styles.text}>{userName}</Text>
       <AppButton
         title="Press Me"
         color="dodgerblue"
@@ -28,7 +35,14 @@ const ButtonsScreen = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
+    alignItems: 'center',
     backgroundColor: '#000',
+  },
+  text: {
+    fontSize: 20,
+    color: '#fff',
+    fontWeight: '500',
+    marginBottom: 50,
   },
 });
 
