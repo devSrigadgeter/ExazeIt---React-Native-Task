@@ -1,18 +1,34 @@
 // external imports
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
+
+import AppButton from '../Components/AppButton';
+import AppSlider from '../Components/AppSlider';
+import Screen from '../Components/Screen';
 
 const ButtonsScreen = () => {
   return (
-    <View>
-      <Text style={styles.text}>Buttons</Text>
-    </View>
+    <Screen style={styles.container}>
+      <AppButton
+        title="Press Me"
+        color="dodgerblue"
+        backgroundColor="transparent"
+      />
+      <AppButton
+        title="Press Me"
+        color="dodgerblue"
+        backgroundColor="#9ccad95c"
+      />
+      <AppButton title="Press Me" />
+      <AppSlider text="Slide Me" image={require('../assets/blue-gem.png')} />
+    </Screen>
   );
 };
 
 const styles = StyleSheet.create({
-  text: {
-    fontSize: 25,
+  container: {
+    padding: 10,
+    backgroundColor: '#000',
   },
 });
 
