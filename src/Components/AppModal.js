@@ -1,6 +1,7 @@
 // external imports
 import React from 'react';
 import {Modal, StyleSheet, View} from 'react-native';
+import PropTypes from 'prop-types';
 
 const AppModal = ({showAlert, children, closeAlert}) => {
   return (
@@ -23,5 +24,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+AppModal.propTypes = {
+  showAlert: PropTypes.bool,
+  children: PropTypes.node,
+  closeAlert: PropTypes.func,
+};
 
 export default AppModal;

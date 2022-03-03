@@ -2,6 +2,7 @@
 import React from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
+import PropTypes from 'prop-types';
 
 // internal imports
 import Screen from '../Components/Screen';
@@ -39,5 +40,9 @@ const styles = StyleSheet.create({
     bottom: 30,
   },
 });
+
+ProfileScreen.propTypes = {
+  navigation: PropTypes.object,
+};
 
 export default ProfileScreen;

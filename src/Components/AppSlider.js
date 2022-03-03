@@ -2,6 +2,7 @@
 import React from 'react';
 import {Alert, Image, StyleSheet, Text, View} from 'react-native';
 import Slider from 'react-native-slide-to-unlock';
+import PropTypes from 'prop-types';
 
 const AppSlider = ({image, text, sliderColor = 'dodgerblue'}) => {
   return (
@@ -48,5 +49,10 @@ const styles = StyleSheet.create({
     color: sliderColor,
   }),
 });
+
+AppSlider.propTypes = {
+  text: PropTypes.string,
+  sliderColor: PropTypes.string,
+};
 
 export default AppSlider;

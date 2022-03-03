@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 import DeviceInfo from 'react-native-device-info';
+import PropTypes from 'prop-types';
 
 // internal imports
 import Screen from '../Components/Screen';
@@ -94,5 +95,9 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
 });
+
+WelcomeScreen.propTypes = {
+  navigation: PropTypes.object,
+};
 
 export default WelcomeScreen;
