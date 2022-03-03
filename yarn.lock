@@ -5385,6 +5385,13 @@ react-native-screens@^3.13.1:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
 
+react-native-slide-to-unlock@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/react-native-slide-to-unlock/-/react-native-slide-to-unlock-0.1.6.tgz#015b0b9916d6bbe863052ae02cb089a3d2e35c0c"
+  integrity sha512-6dywdbdgyRc3d0Ni+VKPrJW0DtA+38UuMjbewr+pGF6gLZal3dWn5RzILKwLYsynzCp3dljAXsKgFMSYFCdyQg==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-native@0.67.3:
   version "0.67.3"
   resolved "https://registry.npmjs.org/react-native/-/react-native-0.67.3.tgz"
