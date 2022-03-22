@@ -20,14 +20,14 @@ const WelcomeScreen = ({ navigation }: Props): React.Node => {
   const { useState, useEffect } = React;
   const [name, setName] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [isRealDevice, setIsRealDevice] = useState(true);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     DeviceInfo.isEmulator().then((isEmulator) => {
-      if (isEmulator) {
-        setShowModal(true);
-      }
+      if (isEmulator) setIsRealDevice(false);
+      setShowModal(true);
     });
   }, []);
 
@@ -44,7 +44,9 @@ const WelcomeScreen = ({ navigation }: Props): React.Node => {
         <View style={styles.alertContainer}>
           <Text style={styles.boldText}>Alert</Text>
           <View style={styles.hl} />
-          <Text style={styles.message}>You're running app in an emulator</Text>
+          <Text style={styles.message}>
+            You're running app in {isRealDevice ? "a real device" : "an emulator"}
+          </Text>
           <View style={styles.buttonContainer}>
             <Button title="OK" onPress={() => closeAlert()} />
           </View>
