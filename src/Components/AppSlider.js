@@ -4,7 +4,10 @@ import {Alert, Image, StyleSheet, Text, View} from 'react-native';
 import Slider from 'react-native-slide-to-unlock';
 import PropTypes from 'prop-types';
 
-const AppSlider = ({image, text, sliderColor = 'dodgerblue'}) => {
+// internal imports
+import {PRIMARY_COLOR} from '../utils/constants';
+
+const AppSlider = ({image, text, sliderColor = PRIMARY_COLOR}) => {
   return (
     <Slider
       childrenContainer={styles.childContainer}

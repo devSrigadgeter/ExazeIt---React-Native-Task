@@ -3,11 +3,14 @@ import React from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 
+// internal imports
+import {PRIMARY_COLOR, WHITE} from '../utils/constants';
+
 const AppButton = ({
   title,
   onPress,
-  color = '#fff',
-  backgroundColor = 'dodgerblue',
+  color = WHITE,
+  backgroundColor = PRIMARY_COLOR,
 }) => {
   return (
     <TouchableOpacity style={styles.button(backgroundColor)} onPress={onPress}>
