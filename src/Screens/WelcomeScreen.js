@@ -1,9 +1,8 @@
 // @flow
 // external imports
 import * as React from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, Platform, StyleSheet, Text, TextInput, View } from "react-native";
 import { useDispatch } from "react-redux";
-import DeviceInfo from "react-native-device-info";
 
 // internal imports
 import Screen from "../Components/Screen";
@@ -23,12 +22,15 @@ const WelcomeScreen = ({ navigation }: Props): React.Node => {
   const [isRealDevice, setIsRealDevice] = useState(true);
 
   const dispatch = useDispatch();
+  // console.log("Platform Fingerprint >>", Platform.constants.Fingerprint);
 
   useEffect(() => {
-    DeviceInfo.isEmulator().then((isEmulator) => {
+    if (Platform.constants) {
+      const isEmulator = Platform.constants?.Fingerprint.includes("emulator") || false;
+      // console.log("isEmulator >>", isEmulator);
       if (isEmulator) setIsRealDevice(false);
       setShowModal(true);
-    });
+    }
   }, []);
 
   const closeAlert = () => setShowModal(false);
