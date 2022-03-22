@@ -1,14 +1,18 @@
+// @flow
 // external imports
-import React from "react";
+import * as React from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { useSelector } from "react-redux";
-import PropTypes from "prop-types";
 
 // internal imports
 import Screen from "../Components/Screen";
 import Avatar from "../Components/Avatar";
 
-const ProfileScreen = ({ navigation }) => {
+type Props = {
+  navigation: Object
+};
+
+const ProfileScreen = ({ navigation }: Props): React.Node => {
   const { userName } = useSelector((state) => state.auth);
 
   return (
@@ -37,9 +41,5 @@ const styles = StyleSheet.create({
     bottom: 30
   }
 });
-
-ProfileScreen.propTypes = {
-  navigation: PropTypes.object
-};
 
 export default ProfileScreen;

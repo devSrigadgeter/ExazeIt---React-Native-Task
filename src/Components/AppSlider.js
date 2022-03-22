@@ -1,13 +1,19 @@
+// @flow
 // external imports
-import React from "react";
+import * as React from "react";
 import { Alert, Image, StyleSheet, Text, View } from "react-native";
 import Slider from "react-native-slide-to-unlock";
-import PropTypes from "prop-types";
 
 // internal imports
 import { PRIMARY_COLOR } from "../utils/constants";
 
-const AppSlider = ({ image, text, sliderColor = PRIMARY_COLOR }) => {
+type Props = {
+  image?: React.Node,
+  text: string,
+  sliderColor?: string
+};
+
+const AppSlider = ({ image, text, sliderColor = PRIMARY_COLOR }: Props): React.Node => {
   return (
     <Slider
       childrenContainer={styles.childContainer}
@@ -53,10 +59,5 @@ const styles = StyleSheet.create({
     color: sliderColor
   })
 });
-
-AppSlider.propTypes = {
-  text: PropTypes.string,
-  sliderColor: PropTypes.string
-};
 
 export default AppSlider;

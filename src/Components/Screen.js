@@ -1,9 +1,14 @@
+// @flow
 // external imports
-import React from "react";
+import * as React from "react";
 import { StyleSheet, SafeAreaView } from "react-native";
-import PropTypes from "prop-types";
 
-function Screen({ children, style }) {
+type Props = {
+  children: React.Node,
+  style: Object
+};
+
+function Screen({ children, style }: Props): React.Node {
   return <SafeAreaView style={[styles.screen, style]}>{children}</SafeAreaView>;
 }
 
@@ -12,10 +17,5 @@ const styles = StyleSheet.create({
     flex: 1
   }
 });
-
-Screen.propTypes = {
-  children: PropTypes.node,
-  style: PropTypes.object
-};
 
 export default Screen;

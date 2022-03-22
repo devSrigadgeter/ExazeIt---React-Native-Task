@@ -1,9 +1,9 @@
+// @flow
 // external imports
-import React, { useEffect, useState } from "react";
+import * as React from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 import { useDispatch } from "react-redux";
 import DeviceInfo from "react-native-device-info";
-import PropTypes from "prop-types";
 
 // internal imports
 import Screen from "../Components/Screen";
@@ -12,7 +12,12 @@ import AppModal from "../Components/AppModal";
 // redux actions
 import { setUserName } from "../Store/Actions/Auth";
 
-const WelcomeScreen = ({ navigation }) => {
+type Props = {
+  navigation: Object
+};
+
+const WelcomeScreen = ({ navigation }: Props): React.Node => {
+  const { useState, useEffect } = React;
   const [name, setName] = useState("");
   const [showModal, setShowModal] = useState(false);
 
@@ -95,9 +100,5 @@ const styles = StyleSheet.create({
     marginVertical: 10
   }
 });
-
-WelcomeScreen.propTypes = {
-  navigation: PropTypes.object
-};
 
 export default WelcomeScreen;

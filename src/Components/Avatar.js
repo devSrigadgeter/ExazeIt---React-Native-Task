@@ -1,8 +1,9 @@
+// @flow
 // external imports
-import React from "react";
+import * as React from "react";
 import { Image, StyleSheet, View } from "react-native";
 
-const Avatar = () => {
+const Avatar = (): React.Node => {
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={require("../assets/avatar.jpg")} />

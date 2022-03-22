@@ -1,12 +1,6 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+// @flow
 // external imports
-import React from "react";
+import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -17,7 +11,7 @@ import ButtonsScreen from "./src/Screens/ButtonsScreen";
 
 const Stack = createNativeStackNavigator();
 
-const App = () => {
+const App = (): React.Node => {
   return (
     <NavigationContainer>
       <Stack.Navigator>

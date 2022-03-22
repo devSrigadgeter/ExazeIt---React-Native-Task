@@ -1,5 +1,6 @@
+// @flow
 // external imports
-import React from "react";
+import * as React from "react";
 import { StyleSheet, Text } from "react-native";
 import { useSelector } from "react-redux";
 
@@ -9,7 +10,7 @@ import AppSlider from "../Components/AppSlider";
 import Avatar from "../Components/Avatar";
 import Screen from "../Components/Screen";
 
-const ButtonsScreen = () => {
+const ButtonsScreen = (): React.Node => {
   const { userName } = useSelector((state) => state.auth);
 
   return (
