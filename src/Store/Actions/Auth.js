@@ -1,6 +1,6 @@
-import {SET_USER_NAME} from './ActionTypes';
+import { SET_USER_NAME } from "./ActionTypes";
 
-export const setUserName = userName => ({
+export const setUserName = (userName) => ({
   type: SET_USER_NAME,
-  userName,
+  userName
 });
