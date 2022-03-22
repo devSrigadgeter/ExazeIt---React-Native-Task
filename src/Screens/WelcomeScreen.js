@@ -22,12 +22,10 @@ const WelcomeScreen = ({ navigation }: Props): React.Node => {
   const [isRealDevice, setIsRealDevice] = useState(true);
 
   const dispatch = useDispatch();
-  // console.log("Platform Fingerprint >>", Platform.constants.Fingerprint);
 
   useEffect(() => {
     if (Platform.constants) {
       const isEmulator = Platform.constants?.Fingerprint.includes("emulator") || false;
-      // console.log("isEmulator >>", isEmulator);
       if (isEmulator) setIsRealDevice(false);
       setShowModal(true);
     }
