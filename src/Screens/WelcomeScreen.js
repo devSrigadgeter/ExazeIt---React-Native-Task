@@ -1,36 +1,43 @@
+// @flow
 // external imports
-import React, {useEffect, useState} from 'react';
-import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
-import {useDispatch} from 'react-redux';
-import DeviceInfo from 'react-native-device-info';
-import PropTypes from 'prop-types';
+import * as React from "react";
+import { Button, Platform, StyleSheet, Text, TextInput, View } from "react-native";
+import { useDispatch } from "react-redux";
 
 // internal imports
-import Screen from '../Components/Screen';
-import AppModal from '../Components/AppModal';
+import Screen from "../Components/Screen";
+import AppModal from "../Components/AppModal";
 
 // redux actions
-import {setUserName} from '../Store/Actions/Auth';
+import { setUserName } from "../Store/Actions/Auth";
 
-const WelcomeScreen = ({navigation}) => {
-  const [name, setName] = useState('');
+type Props = {
+  navigation: Object
+};
+
+const WelcomeScreen = ({ navigation }: Props): React.Node => {
+  const { useState, useEffect } = React;
+  const [name, setName] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [isRealDevice, setIsRealDevice] = useState(true);
 
   const dispatch = useDispatch();
+  // console.log("Platform Fingerprint >>", Platform.constants.Fingerprint);
 
   useEffect(() => {
-    DeviceInfo.isEmulator().then(isEmulator => {
-      if (isEmulator) {
-        setShowModal(true);
-      }
-    });
+    if (Platform.constants) {
+      const isEmulator = Platform.constants?.Fingerprint.includes("emulator") || false;
+      // console.log("isEmulator >>", isEmulator);
+      if (isEmulator) setIsRealDevice(false);
+      setShowModal(true);
+    }
   }, []);
 
   const closeAlert = () => setShowModal(false);
 
   const handleSave = () => {
     dispatch(setUserName(name));
-    navigation.navigate('Profile');
+    navigation.navigate("Profile");
   };
 
   return (
@@ -39,7 +46,9 @@ const WelcomeScreen = ({navigation}) => {
         <View style={styles.alertContainer}>
           <Text style={styles.boldText}>Alert</Text>
           <View style={styles.hl} />
-          <Text style={styles.message}>You're running app in an emulator</Text>
+          <Text style={styles.message}>
+            You're running app in {isRealDevice ? "a real device" : "an emulator"}
+          </Text>
           <View style={styles.buttonContainer}>
             <Button title="OK" onPress={() => closeAlert()} />
           </View>
@@ -62,42 +71,38 @@ const styles = StyleSheet.create({
   container: {
     padding: 10,
     paddingBottom: 30,
-    justifyContent: 'flex-end',
+    justifyContent: "flex-end"
   },
   input: {
     padding: 5,
-    width: '100%',
+    width: "100%",
     marginBottom: 15,
     borderBottomWidth: 1,
-    borderBottomColor: '#cecece',
+    borderBottomColor: "#cecece"
   },
   alertContainer: {
-    shadowColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    shadowColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
     width: 180,
     padding: 10,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff"
   },
   boldText: {
-    fontWeight: 'bold',
+    fontWeight: "bold"
   },
   message: {
-    paddingVertical: 10,
+    paddingVertical: 10
   },
   hl: {
     height: 1,
-    width: '100%',
-    backgroundColor: 'darkgray',
+    width: "100%",
+    backgroundColor: "darkgray"
   },
   buttonContainer: {
-    width: '100%',
-    marginVertical: 10,
-  },
+    width: "100%",
+    marginVertical: 10
+  }
 });
-
-WelcomeScreen.propTypes = {
-  navigation: PropTypes.object,
-};
 
 export default WelcomeScreen;

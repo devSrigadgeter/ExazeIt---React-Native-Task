@@ -1,7 +1,7 @@
-import {SET_USER_NAME} from '../Actions/ActionTypes';
+import { SET_USER_NAME } from "../Actions/ActionTypes";
 
 const initialState = {
-  userName: '',
+  userName: ""
 };
 
 export default (state = initialState, action) => {
@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
     case SET_USER_NAME:
       return {
         ...state,
-        userName: action.userName,
+        userName: action.userName
       };
     default:
       return state;
